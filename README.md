@@ -1,6 +1,6 @@
 ## CPP2P
 
-Multifunctional chat written on **C++**
+Multifunctional chat written in **C++**
 Sopports **Lua** scripting language for implementing custom features
 
 Libraries used:
