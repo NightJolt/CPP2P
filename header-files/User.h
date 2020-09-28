@@ -79,8 +79,10 @@ protected:
     // Initialize local lua bot
     //virtual void InitLocalBot(std::string);
 
+    /*
     // Check if lua state command successed
     virtual bool ValidateLuaState(lua_State*, int);
+     */
 
     unsigned short id; // Local chat id
     unsigned short port; // Used port for socket communications

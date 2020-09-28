@@ -56,7 +56,7 @@ private:
     std::map <std::string, _client_*> clients; // Stores all clients with _client_ struct and [ip addr + ':' + remote port] as key
 
 
-
+    /*
     std::map <std::string, lua_State*> public_bots; // todo store elsewise
 
     // Initialize local lua bot
@@ -67,4 +67,5 @@ private:
 
     // Public Bot Log
     static int BotPublicPrint(lua_State*);
+    */
 };

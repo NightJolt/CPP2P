@@ -13,9 +13,10 @@ using namespace sf;
 int main() {
     ios::sync_with_stdio(false);
 
-    RenderWindow window(sf::VideoMode(1920, 1440), "CPP2PChat");
+    RenderWindow window(VideoMode(1920, 1440), "CPP2PChat");
     ImGui::SFML::Init(window);
     window.resetGLStates();
+
 
 
 
@@ -45,12 +46,16 @@ int main() {
 
 
     while (window.isOpen()) {
-        sf::Event event;
+        Event event;
 
         while (window.pollEvent(event)) {
             ImGui::SFML::ProcessEvent(event);
 
-            if (event.type == sf::Event::Closed) {
+            if (event.type == Event::Closed) {
+                /*for (auto& room : rooms) {
+                    delete room;
+                }*/
+
                 window.close();
             }
         }
@@ -156,8 +161,24 @@ int main() {
             ImGui::BeginChild("RoomList", ImVec2(win_size->x * 0.12f, 0), true);
 
                 for (int i = 0; i < rooms.size(); i++) {
-                    if (ImGui::Selectable((rooms[i]->name + "##" + to_string(i)).c_str(), room_index == i/*, ImGuiSelectableFlags_None, ImVec2(ImGui::GetWindowContentRegionWidth() * .8f, 0)*/))
+                    if (ImGui::Selectable(("##" + to_string(i)).c_str(), room_index == i/*, ImGuiSelectableFlags_None, ImVec2(ImGui::GetWindowContentRegionWidth() * .8f, 0)*/)) {
                         room_index = i;
+                    }
+
+                    ImGui::SameLine();
+
+                    ImGui::TextDisabled("(?)");
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::BeginTooltip();
+                        ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+                        ImGui::TextUnformatted("Double click to disconnect");
+                        ImGui::PopTextWrapPos();
+                        ImGui::EndTooltip();
+                    }
+
+                    ImGui::SameLine();
+
+                    ImGui::Text("%s", rooms[i]->name.c_str());
 
                     if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0)) {
                         delete rooms[i];

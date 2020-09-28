@@ -22,7 +22,7 @@ void Master::Connect() {
     port_listener.setBlocking(false);
 
     if (port_listener.listen(port) != sf::Socket::Done) {
-        Log(LOCAL_DEBUG_LOG, "Failed to listen to port");
+        Log(LOCAL_DEBUG_LOG, "Failed listening to port, it might be busy. Choose another one or try again in few seconds");
     } else {
         Log(LOCAL_DEBUG_LOG, "Listening to port");
     }
@@ -109,7 +109,7 @@ bool Master::IsMaster() {
 }
 
 
-
+/*
 int Master::BotLocalPrint(lua_State* bot) {
     lua_getglobal(bot, "instance");
     Master* master = (Master*)lua_touserdata(bot, -1);
@@ -187,3 +187,4 @@ void Master::InitPublicBot(std::string path) {
 
     delete bot;
 }
+*/

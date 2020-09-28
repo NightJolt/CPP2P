@@ -149,7 +149,7 @@ void User::Draw() {
 }
 
 
-
+/*
 bool User::ValidateLuaState(lua_State* bot, int v) {
     if (v != LUA_OK) {
         std::cout << lua_tostring(bot, -1) << std::endl;
@@ -159,3 +159,4 @@ bool User::ValidateLuaState(lua_State* bot, int v) {
 
     return true;
 }
+*/
